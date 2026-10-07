@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="open_rviz" default="true"/>
+
+  <node pkg="attitude_estimation" type="ekf_attitude_estimation.py" name="ekf_attitude_estimation"  output="screen"/>
+  <node pkg="attitude_estimation" type="rivz_marker.py" name="rivz_marker"  output="screen"/>
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find attitude_estimation)/launch/rviz/rviz.rviz"/>
+  </group>
+</launch>
